@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+    // Reference to the GameManager script
+    private GameManager gameManager;
     private float minSpeed = 12;
     private float maxSpeed = 16;
     private float maxTorque = 10;
@@ -15,6 +17,8 @@ public class Target : MonoBehaviour
     void Start()
     {
         targetRb = GetComponent<Rigidbody>();
+        // Find the GameManager script and assign it to the gameManager variable
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         targetRb.AddForce(RandomForce(), ForceMode.Impulse);
         targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(),  ForceMode.Impulse);
         transform.position = RandomSpawnPos();
@@ -29,6 +33,8 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
+        // When the target is clicked, update the score by 5
+        gameManager.UpdateScore(5);
     }
 
     private void OnTriggerEnter(Collider other)

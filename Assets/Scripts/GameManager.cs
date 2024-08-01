@@ -36,12 +36,11 @@ public class GameManager : MonoBehaviour
             // Randomly select a target from the list and instantiate it
             int index = Random.Range(0, targets.Count);
             Instantiate(targets[index]);
-            UpdateScore(5);
         }
     }
 
-    // Method to update the score
-    void UpdateScore(int scoreToAdd)
+    // Method to update the score and its public so that it can be accessed from other scripts
+    public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
