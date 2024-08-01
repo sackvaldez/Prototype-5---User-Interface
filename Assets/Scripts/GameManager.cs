@@ -6,6 +6,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> targets;
+    // Reference to the score text
     public TextMeshProUGUI scoreText;
     private float spawnRate = 1.0f;
     private int score;
@@ -13,8 +14,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         score = 0;
+        // 
         scoreText.text = "Score: " + score;
         StartCoroutine(SpawnTarget());
+        UpdateScore(0);
     }
 
     // Update is called once per frame
@@ -33,6 +36,14 @@ public class GameManager : MonoBehaviour
             // Randomly select a target from the list and instantiate it
             int index = Random.Range(0, targets.Count);
             Instantiate(targets[index]);
+            UpdateScore(5);
         }
+    }
+
+    // Method to update the score
+    void UpdateScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        scoreText.text = "Score: " + score;
     }
 }
