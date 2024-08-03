@@ -22,6 +22,7 @@ public class Target : MonoBehaviour
         targetRb.AddForce(RandomForce(), ForceMode.Impulse);
         targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(),  ForceMode.Impulse);
         transform.position = RandomSpawnPos();
+
     }
 
     // Update is called once per frame
@@ -29,6 +30,8 @@ public class Target : MonoBehaviour
     {
         
     }
+
+    
 
     private void OnMouseDown()
     {
@@ -40,6 +43,15 @@ public class Target : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
+        // When the target is destroyed, update the score by 1 depending on the object that collided with it
+        if (!gameObject.CompareTag("Bad"))
+        {
+            gameManager.UpdateScore(5);
+        }
+        else
+        {
+            gameManager.GameOver();
+        }
     }
 
     Vector3 RandomSpawnPos()
