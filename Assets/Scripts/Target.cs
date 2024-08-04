@@ -6,13 +6,14 @@ public class Target : MonoBehaviour
 {
     // Reference to the GameManager script
     private GameManager gameManager;
+    private Rigidbody targetRb;
     private float minSpeed = 12;
     private float maxSpeed = 16;
     private float maxTorque = 10;
     private float xRange = 4;
     private float ySpawnPos = -2;
+    public int pointValue;
 
-    private Rigidbody targetRb;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +37,8 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
-        // When the target is clicked, update the score by 5
-        gameManager.UpdateScore(5);
+        // When the target is clicked, update the score by the point value
+        gameManager.UpdateScore(pointValue);
     }
 
     private void OnTriggerEnter(Collider other)
