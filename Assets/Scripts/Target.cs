@@ -7,6 +7,7 @@ public class Target : MonoBehaviour
     // Reference to the GameManager script
     private GameManager gameManager;
     private Rigidbody targetRb;
+    public ParticleSystem explosionParticle;
     private float minSpeed = 12;
     private float maxSpeed = 16;
     private float maxTorque = 10;
@@ -39,6 +40,8 @@ public class Target : MonoBehaviour
         Destroy(gameObject);
         // When the target is clicked, update the score by the point value
         gameManager.UpdateScore(pointValue);
+        // Instantiate the explosion particle effect
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
     }
 
     private void OnTriggerEnter(Collider other)
