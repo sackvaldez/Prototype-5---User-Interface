@@ -426,7 +426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &974118118
 RectTransform:
   m_ObjectHideFlags: 0
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA1GAME OVER!\n"
+  m_text: GAME OVER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 98585082d1d5e47f9b207a183c6d083b, type: 2}
   m_sharedMaterial: {fileID: 21961398293673850, guid: 98585082d1d5e47f9b207a183c6d083b, type: 2}
@@ -1005,6 +1005,7 @@ MonoBehaviour:
   - {fileID: 7708868370199225292, guid: 99f85f0af27e87949981e4695f842b57, type: 3}
   - {fileID: 6461299706677356462, guid: 5bbeba3858c26a44881741ee2abea6f5, type: 3}
   scoreText: {fileID: 1130479580}
+  gameOverText: {fileID: 974118119}
 --- !u!4 &1637063774
 Transform:
   m_ObjectHideFlags: 0
