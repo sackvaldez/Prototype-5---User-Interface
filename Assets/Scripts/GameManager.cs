@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         
     }
 
+    // Method to end the game
     public void GameOver()
     {
         Debug.Log("Game Over");
