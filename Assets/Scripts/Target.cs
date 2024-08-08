@@ -50,12 +50,9 @@ public class Target : MonoBehaviour
         // When the target is destroyed, update the score by 1 depending on the object that collided with it
         if (!gameObject.CompareTag("Bad"))
         {
-            gameManager.UpdateScore(5);
-        }
-        else
-        {
             gameManager.GameOver();
         }
+        
     }
 
     Vector3 RandomSpawnPos()
