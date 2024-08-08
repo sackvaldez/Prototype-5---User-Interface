@@ -11,11 +11,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     private float spawnRate = 1.0f;
     private int score;
+    public bool isGameActive;
     // Start is called before the first frame update
     void Start()
     {
+        isGameActive = true;
         score = 0;
-        // 
         scoreText.text = "Score: " + score;
         StartCoroutine(SpawnTarget());
     }
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
     // Method to end the game
     public void GameOver()
     {
+        isGameActive = false;
         Debug.Log("Game Over");
         gameOverText.gameObject.SetActive(true);
     }
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour
     IEnumerator SpawnTarget()
     {
         // Temporary loop to spawn targets
-        while (true)
+        while (isGameActive)
         {
             yield return new WaitForSeconds(spawnRate);
             // Randomly select a target from the list and instantiate it

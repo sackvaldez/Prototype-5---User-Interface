@@ -37,17 +37,21 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Destroy(gameObject);
-        // When the target is clicked, update the score by the point value
-        gameManager.UpdateScore(pointValue);
-        // Instantiate the explosion particle effect
-        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+        if (gameManager.isGameActive)
+        {
+            Destroy(gameObject);
+            // When the target is clicked, update the score by the point value
+            gameManager.UpdateScore(pointValue);
+            // Instantiate the explosion particle effect
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
-        // When the target is destroyed, update the score by 1 depending on the object that collided with it
+        // If the target is not tagged as "Bad", end the game
         if (!gameObject.CompareTag("Bad"))
         {
             gameManager.GameOver();
