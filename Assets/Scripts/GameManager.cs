@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+// SceneManagement it is a library that allows us to manage scenes in Unity
 using UnityEngine.SceneManagement;
+// UI is a library that allows us to access the UI elements in Unity
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,9 +13,10 @@ public class GameManager : MonoBehaviour
     // Reference to the score text
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
+    public bool isGameActive;
+    public Button restartButton;
     private float spawnRate = 1.0f;
     private int score;
-    public bool isGameActive;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,8 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         Debug.Log("Game Over");
         gameOverText.gameObject.SetActive(true);
+        // Set the restart button to be active
+        restartButton.gameObject.SetActive(true);
     }
 
     // Coroutine to spawn targets
