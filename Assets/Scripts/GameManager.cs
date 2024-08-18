@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// TextMeshPro is a library that allows us to use TextMeshPro in Unity
 using TMPro;
 // SceneManagement it is a library that allows us to manage scenes in Unity
 using UnityEngine.SceneManagement;
@@ -9,6 +10,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    // We need to store the targets in a list of GameObjects so that we can randomly select them
     public List<GameObject> targets;
     // Reference to the score text
     public TextMeshProUGUI scoreText;
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject titleScreen;
     private float spawnRate = 1.0f;
     private int score;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,9 +68,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void StartGame(){
+    // This method will start the game and it will take a difficulty parameter to adjust the spawn rate
+    public void StartGame(int difficulty){
         isGameActive = true;
         titleScreen.gameObject.SetActive(false);
+        spawnRate /= difficulty;
         score = 0;
         scoreText.text = "Score: " + score;
         StartCoroutine(SpawnTarget());
