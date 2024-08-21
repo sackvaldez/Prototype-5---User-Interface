@@ -27,7 +27,7 @@ public class TargetX : MonoBehaviour
     }
 
     // When target is clicked, destroy it, update score, and generate explosion
-    private void OnMouseEnter()
+    private void OnMouseDown()
     {
         if (gameManagerX.isGameActive)
         {
@@ -80,7 +80,7 @@ public class TargetX : MonoBehaviour
         yield return new WaitForSeconds(timeOnScreen);
         if (gameManagerX.isGameActive)
         {
-            transform.Translate(Vector3.forward * 5, Space.World);
+            transform.Translate(Vector3.forward * 3, Space.World);
         }
 
     }
